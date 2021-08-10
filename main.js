@@ -47,6 +47,9 @@ console.log("how\\re you?"); // how\re you?
 
 console.log("----- 1-2. 데이터 타입 - 숫자 (NaN, parseInt, parseFloat, Number, 거듭제곱, Infinity) -----");
 
+// 전역함수 : 전체의 영역에서 사용 가능한 함수
+// ex) setTimeout, setInterval, clearTimeout, clearInterval, parseInt, parseFloat
+
 // 10진법
 console.log(5e4); // 50000
 console.log(5e-4); // 0.0005
@@ -115,6 +118,23 @@ console.log(Number("3월") - 0); // NaN
 console.log(parseInt("3월")); // 3
 console.log(parseInt("3월") - 0); // 3
 
+// Number.toFixed() : 반올림
+const pi = 3.14159265358979;
+const str = pi.toFixed(2);
+console.log(str); // 3.14
+console.log(typeof str); // string
+
+// Math : 수학적인 상수와 함수를 위핸 속성과 메서드를 가진 자바스크립트에 내장되어있는 내장 객체 (함수 객체 X)
+console.log("abs: ", Math.abs(-12)); // 12   // 절대값
+console.log("min: ", Math.min(2, 8)); // 2   // 작은값
+console.log("max: ", Math.max(2, 8)); // 8   // 큰값
+console.log("ceil: ", Math.ceil(3.14)); // 4   // 올림 (기본적으로 정수 단위로 올림)
+console.log("floor: ", Math.floor(3.94)); // 3   // 내림
+console.log("round: ", Math.round(3.14)); // 3   // 반올림
+console.log("round: ", Math.round(3.54)); // 4   // 반올림
+console.log("random: ", Math.random()); // 정수가 0인 랜덤 숫자
+console.log("random: ", Math.floor(Math.random() * 10)); // 0~9 범위의 랜덤 숫자
+
 /*
 
 1-3. 데이터 타입 - 불 값 (boolean, 값들의 비교)
@@ -178,11 +198,11 @@ console.log(!!null); // false
 
 /*
 
-1-5. 데이터 타입 - 확인 (typeof)
+1-5. 데이터 타입 확인 (typeof)
 
 */
 
-console.log("----- 1-5. 데이터 타입 - 확인 (typeof) -----");
+console.log("----- 1-5. 데이터 타입 확인 (typeof) -----");
 
 console.log(typeof "Hello world!"); // string
 console.log(typeof "문자열"); // string
@@ -200,6 +220,41 @@ console.log(typeof undefined); // undefined
 console.log(typeof null); // object
 console.log(typeof {}); // object
 console.log(typeof []); // object
+
+/*
+
+1-6. 데이터 조회
+
+*/
+
+console.log("----- 1-6. 데이터 조회 -----");
+
+// String.indexOf() : 몇 번째 문자인지
+console.log("Hello world!".indexOf("world")); // 6
+console.log("Hello world!".indexOf("Heropy")); // -1   // 일치하는 값이 없음
+console.log("Hello world!".indexOf("HEROPY") !== -1); // false
+
+// String.length : 문자 수
+console.log("01 23".length); // 5   // 공백도 문자로 인식
+
+// String.slice() : 문자 자르기, 0부터 시작, 0부터 시작하고 직전까지 추출
+console.log("Hello world!".slice(0, 3)); // Hel
+console.log("Hello world!".slice(6, 11)); // world
+
+// String.replace() : 문자 바꾸기
+console.log("Hello world!".replace("world", "HEROPY")); // Hello HEROPY!
+console.log("Hello world!".replace(" world!", "")); // Hello
+
+// String.match() : 배열형식으로 추출
+// 이메일에서 아이디 추출
+const email = "thesecon@gmail.com";
+const id = email.match(/.+(?=@)/); // /.+(?=@)/ : 정규표현식
+
+console.log(id); // ["thesecon", index: 0, input: "thesecon@gmail.com", groups: undefined]
+console.log(id[0]); // thesecon
+
+// String.trim() : 맨 앞과 맨 뒤의 공백 제거
+console.log("   Hello   world!   ".trim()); // Hello   world!
 
 /*
 
@@ -558,7 +613,7 @@ switch (condition) {
         console.log("switch3");
 }
 
-// break : 조건이 일치하면 정지
+// break : 조건이 일치하면 종료
 switch (condition) {
     case "switch0":
         console.log("동작문1");
@@ -792,7 +847,7 @@ for (let i = 0; i < 10; i++) {
 
 /*
 
-6-1. 배열
+6-1. 배열 기본
 
 */
 
@@ -827,11 +882,13 @@ console.log(emptyValue[emptyValue.length - 1]); // NaN
 
 /*
 
-6-2. 배열 메서드 (수정)
+6-2. 배열 메서드 수정
 
 */
 
-console.log("----- 6-2. 배열 메서드 (수정) -----");
+console.log("----- 6-2. 배열 메서드 수정 -----");
+
+// const는 값을 바꾸지(재할당) 못하지만 객체 내부의 속성이나 배열 요소는 수정 가능
 
 // 배열 요소 추가
 const array2 = ["b", "d"];
@@ -839,18 +896,17 @@ const array2 = ["b", "d"];
 array2[2] = "d";
 console.log(array2); // (3) ["b", "d", "d"]
 
-// 배열 마지막 자리에 요소 추가
+// Array.push() : 배열의 맨 뒤에 요소 추가 (원본 데이터 수정됨)
 array2[array2.length] = "e";
 console.log(array2); // (4) ["b", "d", "d", "e"]
 
 array2.push("f");
 console.log(array2); // (5) ["b", "d", "d", "e", "f"]
 
-// 배열 첫번째 자리에 요소 추가
+// Array.unshift() : 배열의 맨 앞에 요소 추가 (원본 데이터 수정됨)
 array2.unshift("a");
 console.log(array2); // (6) ["a", "b", "d", "d", "e", "f"]
 
-// const는 값을 바꾸지(재할당) 못하지만 객체 내부의 속성이나 배열 요소는 수정 가능
 const array3 = ["ㄱ", "ㄴ"];
 /* array3 = ["ㄷ", "ㄹ"]; // 불가능 */
 array3[0] = "ㅁ"; // 가능
@@ -868,7 +924,7 @@ console.log(array2); // (5) ["a", "b", "c", "d", "e"]
 array2.shift();
 console.log(array2); // (4) ["b", "c", "d", "e"]
 
-// 배열 중간 요소 제거
+// Array.splice(index, 갯수, (추가할 데이터)) : 배열의 요소 제거 & 추가 (원본 데이터 수정됨)
 const array4 = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ"];
 
 array4.splice(1, 1);
@@ -886,26 +942,39 @@ console.log(array4); // (4) ["a", "b", "c", "ㅂ"]
 array4.splice(3, 0, "c", "c");
 console.log(array4); // (6) ["a", "b", "c", "c", "c", "ㅂ"]
 
+// Array.reverse() : 배열의 순서를 거꾸로 바꿈 (원본 데이터 수정됨)
+console.log(array4.reverse()); // (6) ["ㅂ", "c", "c", "c", "b", "a"]
+
+// Array1.concat(Array2) : 배열 데이터를 병합해 새로운 배열 데이터를 반환 (원본 데이터 손상 X)
+const array11 = [1, 2, 3, 4];
+const array12 = ["Apple", "Banana", "Cherry"];
+
+console.log(array11.concat(array12)); // (7) [1, 2, 3, 4, "Apple", "Banana", "Cherry"]
+console.log(array11); // (4) [1, 2, 3, 4]
+console.log(array12); // (3) ["Apple", "Banana", "Cherry"]
+
 /*
 
-6-3. 배열 메서드 (조회)
+6-3. 배열 메서드 조회
 
 */
 
-console.log("----- 6-3. 배열 메서드 (조회) -----");
+console.log("----- 6-3. 배열 메서드 조회 -----");
 
-// 배열에 요소가 있는지 없는지 찾기
+// Array.length : 배열의 요소 갯수
+console.log([1, 2].length); // 2
+console.log([].length); // 0
+
+// Array.includes() : 배열에 요소 포함 여부
 console.log(array4.includes("c")); // true
 console.log(array4.includes("d")); // false
 
-// 배열의 앞에서부터 찾기
+// Array.indexOf : 배열의 앞에서부터 찾기
 console.log(array4.indexOf("c")); // 2
 
-// 배열의 뒤에서부터 찾기
+// Array.lastIndexOf : 배열의 뒤에서부터 찾기
 console.log(array4.lastIndexOf("c")); // 4
-
-// 배열에 요소가 없을 경우
-console.log(array4.lastIndexOf("d")); // -1
+console.log(array4.lastIndexOf("d")); // -1  // 배열에 요소가 없음
 
 /*
 
@@ -936,11 +1005,67 @@ for (let i = 0; i < array6.length; i++) {
 
 /*
 
-6-5. 배열 메서드 응용하기
+6-5. 배열 콜백함수
 
 */
 
-console.log("----- 6-5. 배열 메서드 응용하기 -----");
+console.log("----- 6-5. 배열 콜백함수 -----");
+
+// Array.forEach(콜백함수) : 배열 데이터의 요소 갯수만큼 콜백함수를 반복적으로 실행 (반환 X)
+
+const array13 = ["Apple", "Banana", "Cherry"];
+
+array13.forEach(function (element, index, array) {
+    console.log(element, index, array);
+}); // 매개변수의 이름은 마음대로 정하기
+
+// Apple 0 (3) ["Apple", "Banana", "Cherry"]
+// Banana 1 (3) ["Apple", "Banana", "Cherry"]
+// Cherry 2 (3) ["Apple", "Banana", "Cherry"]
+
+// Array.map(콜백함수) : 배열 데이터의 요소 갯수만큼 콜백함수를 반복적으로 실행 (반환 O, 원본 데이터 손상 X)
+
+const map1 = array13.forEach(function (array13, index) {
+    console.log(`${array13}-${index}`);
+}); // 콜백함수 밖으로 반환 X
+
+/* 축약
+array13.forEach((array13, index) => {
+    console.log(`${array13}-${index}`);
+}); */
+
+// Apple-0
+// Banana-1
+// Cherry-2
+
+const map2 = array13.map(function (array13, index) {
+    return `${array13}-${index}`;
+}); // 콜백함수 밖으로 반환 O
+
+const map3 = array13.map(function (array13, index) {
+    return {
+        id: index,
+        name: array13,
+    };
+}); // 콜백함수 밖으로 반환 O
+
+/* 축약
+fruits.map((array13, index) => ({
+    id: index,
+    name: array13,
+})); */
+
+console.log(map1); // undefined
+console.log(map2); // (3) ["Apple-0", "Banana-1", "Cherry-2"]
+console.log(map3); // (3) [{…}, {…}, {…}]
+
+/*
+
+6-6. 배열 메서드 응용하기
+
+*/
+
+console.log("----- 6-6. 배열 메서드 응용하기 -----");
 
 const array8 = ["안", "ㅎ", "녕", "ㅎ", "하", "세", "ㅎ", "요"];
 
@@ -972,3 +1097,473 @@ if (array10.indexOf(1) > -1) {
 } else {
     console.log("1 못찾음");
 } // 1 찾음
+
+// Array.filter() : 필터링된 결과(true)만 반환 (반환 O, 원본 데이터 손상 X)
+const array14 = [1, 2, 3, 4];
+const filter1 = array14.map((number) => {
+    return number < 3;
+});
+
+/* 축약
+array14.map((number) => number < 3); */
+
+const filter2 = array14.filter((number) => {
+    return number < 3;
+});
+
+/* 축약
+array14.filter((number) => number < 3); */
+
+console.log(filter1); // (4) [true, true, false, false]
+console.log(filter2); // (2) [1, 2]
+
+// Array.find() : 조건을 만족하는 첫 번째 요소의 값을 반환 (없다면 undefined)
+const array15 = ["Apple", "Banana", "Cherry"];
+const find = array15.find((fruit) => {
+    return /^B/.test(fruit);
+});
+
+/* 축약
+const find = array15.find((fruit) => /^B/.test(fruit)); */
+
+// 정규표현식 /^B/
+// ^ : 시작
+// 대문자 B로 시작하는 문자 데이터
+
+console.log(find); // Banana
+
+// Array.findIndex() : 일치하는 첫 번째 데이터의 index를 찾음
+const findIndex = array15.findIndex((fruit) => {
+    return /^B/.test(fruit);
+});
+
+/* 축약
+const findIndex = array15.findIndex((fruit) => /^B/.test(fruit)); */
+
+// 정규표현식 /^B/
+// ^ : 시작
+// 대문자 B로 시작하는 문자 데이터
+
+console.log(findIndex); // 1
+
+/*
+
+7-1. 호이스팅
+
+*/
+
+console.log("----- 7-1. 호이스팅 -----");
+
+// 호이스팅 : 함수 선언부가 유효범위 최상단으로 끌어올려지는 현상
+
+// 함수 선언 방식 (기명 함수) : function20()을 먼저 호출하는 것이 가능
+function20(1, 2); // 3
+
+function function20(x, y) {
+    console.log(x + y);
+}
+
+// 함수 표현 방식 (익명 함수) : double3()을 먼저 호출하는 것이 불가능
+/* function21(1, 2); // err */
+
+const function21 = function (x, y) {
+    console.log(x + y);
+};
+
+/*
+
+7-2. 화살표 함수
+
+*/
+
+console.log("----- 7-2. 화살표 함수 -----");
+
+// function () {}
+const function24 = function (x, y) {
+    console.log(x + y);
+};
+
+// 축약형 () => {}
+const function25 = (x, y) => {
+    console.log(x + y);
+};
+
+// 객체 데이터 축약형 () => ({})
+// 화살표 함수에서 {}는 함수의 범위를 나타내므로 () 안에서 객체 데이터를 정의해줘야지만 함수 밖으로 반환
+const doubleArrow2 = (x) => ({ age: x + 1 });
+console.log(doubleArrow2(7)); // {age: 8}
+
+/*
+
+7-3. return
+
+*/
+
+console.log("----- 7-3. return -----");
+
+// return : 종료
+
+// 함수를 호출하지 않으면 undefined, 즉 반환값이 없음
+function function1() {
+    // return undefined; // return을 사용하지 않으면 기본적으로 생략되어 있음
+}
+function1();
+
+function function2() {
+    return console.log("반환값");
+}
+function2(); // 반환값
+
+// 함수 안에 조건을 둬서 어디까지 실행되는지 정할 수 있음
+function function3() {
+    if (true) {
+        return;
+    }
+    console.log("return");
+}
+function3(); // 아무것도 출력되지 않음
+
+function function4() {
+    if (false) {
+        return;
+    }
+    console.log("return");
+}
+function4(); // return
+
+// return은 하나만 가능
+function function5() {
+    return 1, 5;
+}
+console.log(function5()); // 5
+
+function function6() {
+    return [1, 5];
+}
+console.log(function6()); // (2) [1, 5]
+
+function function7() {
+    console.log("Hi");
+    return;
+    console.log("return");
+}
+function7(); // Hi
+
+function function22(x, y) {
+    if (x < 2) {
+        return;
+    }
+    return x + y;
+}
+console.log(function22(1, 3)); // undefined
+console.log(function22(7, 3)); // 10
+
+function function23(x, y) {
+    if (x < 2) {
+        return 123;
+    }
+    return x + y;
+}
+console.log(function23(1, 3)); // 123
+
+// {}와 return이 바로 이어서 나오면 {}와 return 생략 가능
+const function13 = (x, y, z) => {
+    return x * y * z;
+};
+
+const function14 = (x, y, z) => x * y * z;
+
+/*
+
+7-4. 매개변수(parameter)와 인수(argument)
+
+*/
+
+console.log("----- 7-4. 매개변수(parameter)와 인수(argument) -----");
+
+// parameter, argument는 화살표 함수에서는 사용 불가
+// parameter : 매개 변수 지정 없이도 함수 안에서 언제든 사용 가능
+// 권장되는 방법은 아니지만 매개 변수가 너무 많아서
+// 일일이 지정하기가 힘든 경우 사용
+
+function function8(parameter) {
+    console.log(parameter);
+}
+function8("argument"); // argument
+
+function function9(w, x, y, z) {
+    console.log(w, x, y, z); // a b c undefined
+    console.log(arguments); // Arguments(3) ["a", "b", "c"]
+}
+function9("a", "b", "c");
+
+function function10(x, y) {
+    return console.log(x + y);
+}
+function10(5, 3); // 8
+
+function function11(x, y) {
+    console.log(x, y); // 5 undefined
+    return console.log(x + y); // NaN
+}
+function11(5);
+
+function function12(x, y) {
+    return console.log(x, y); // a b
+}
+function12("a", "b", "c");
+
+// 함수 내부에서 변수나 상수 선언 가능
+function function15(x, y) {
+    const fff = 100;
+    return console.log((x - y) * fff);
+}
+function15(4, 2); // 200
+
+// 함수 외부의 변수나 상수 사용 가능
+const fff = 100;
+function function16(x, y) {
+    return console.log((x - y) * fff);
+}
+function16(4, 2); // 200
+
+// 변수를 선언하지 않고
+// console.log(function17(1, 3) + function17(4, 12))
+// 라고 해도 되지만 더 느림
+// why?
+// 변수를 선언하면 선언할 때만 함수를 호출하면 되지만
+// 변수를 선언하지 않으면 매번 함수를 실행하기 때문에
+// 여러번 함수를 실행하는 것은 비효율적
+
+function function17(x, y) {
+    console.log(x + y);
+    return x + y;
+}
+const function18 = function17(1, 3);
+const function19 = function17(4, 12);
+
+console.log(function18); // 4
+console.log(function19); // 16
+console.log(function18 + function19); // 20
+
+/*
+
+7-5. 즉시실행함수 (IIFE)
+
+*/
+
+console.log("----- 7-5. 즉시실행함수 (IIFE) -----");
+
+// ;를 안써주면 err
+
+// 즉시실행함수 X
+function function26(a) {
+    console.log(a * 2);
+}
+function26(7); // 14
+
+// 즉시실행함수 O
+(function (a) {
+    console.log(a * 2);
+})(7); // 14
+
+/*
+
+8-1. 객체 리터럴 기본
+
+*/
+
+console.log("----- 8-1. 객체 리터럴 기본 -----");
+
+/* const 객체 = {
+    속성1 이름: 속성1 값,
+    속성2 이름: 속성2 값,
+    속성3 이름: 속성3 값,
+} */
+
+const yeona = {
+    name: "전연아",
+    year: 1994,
+    month: 10,
+    date: 31,
+    gender: "W",
+};
+
+console.log(yeona.name); // 전연아
+console.log(yeona["year"]); // 1994
+
+// []를 사용할 경우 ""를 꼭 써야함
+const name = "???";
+console.log(yeona[name]); // undefined  //  yeona["???"]와 같음
+
+const yeona2 = {
+    name: {
+        first: "연아",
+        last: "전",
+    },
+    gender: "W",
+};
+console.log(yeona2.name.last); // 전
+console.log(yeona2["name"]["last"]); // 전
+
+// 속성 이름에 "" 붙여줘야하는 경우
+const literal = {
+    ab: "a",
+    "2ab": "b", // 첫글자 숫자인 경우
+    "a b": "c", // 뛰어쓰기가 있는 경우
+    "a-b": "d", // 특수문자가 있는 경우
+};
+
+// 속성 이름에 "" 붙여줘야하는 경우에는 []만 가능
+console.log(literal.ab); // a
+// console.log(literal.2ab); // err
+console.log(literal["2ab"]); // b
+
+// 객체 속성 추가
+yeona.number = "010-1234-5678";
+console.log(yeona.number); // 010-1234-5678
+
+// 객체 속성 수정
+yeona.month = "10월";
+console.log(yeona.month); // 10월
+
+// 객체 속성 제거
+delete yeona.gender;
+console.log(yeona.gender); // undefined
+
+// 객체 리터럴 : {}를 사용해 만든 객체
+
+// 배열과 함수가 객체인 이유 : 객체의 성질을 모두 사용할 수 있기 때문
+function literal2() {}
+literal2.a = "Hi";
+console.log(literal2.a); // Hi
+
+const literal3 = [];
+literal3.a = "bye";
+console.log(literal3.a); // bye
+
+// 메서드 : 객체의 속성 값인 함수
+// console.log : console이라는 객체의 log 메서드
+const debug = {
+    log: function (a) {
+        console.log(a);
+    },
+};
+debug.log("Hi"); // Hi
+
+/*
+
+8-2. 객체의 비교 (원시값과의 차이점)
+
+*/
+
+console.log("----- 8-2. 객체의 비교 (원시값과의 차이점) -----");
+
+// 객체끼리 비교는 항상 false
+console.log({} === {}); // false
+
+const object = { a: "10" }; // 객체 리터럴
+const object2 = [1, 2, object]; // 배열 리터럴
+
+console.log(object === object2[2]); // true
+console.log(object2 === [1, 2, object]); // false
+
+// 같은 객체를 참조하는 객체는 함께 속성 값이 바뀜
+const object3 = { a: 1 };
+const object4 = object3;
+console.log(object4); // {a: 1}
+
+object3.a = 2;
+console.log(object4); // {a: 2}
+
+// 객체가 아닌 값 (원시형 데이터 - 문자, 숫자, boolean, null, undefined)은 함께 바뀌지 않음
+let object5 = "a";
+let object6 = object5;
+console.log(object6); // a
+
+object5 = "b";
+console.log(object6); // a
+
+/*
+
+8-3. 객체 데이터 생성
+
+*/
+
+console.log("----- 8-3. 객체 데이터 생성 -----");
+
+// 새로운 객체 데이터 생성 (원본 손상 O)
+
+// Object.assign(대상 객체, 출처 객체)
+// : 하나 이상의 출처 객체로부터 대상 객체로 속성을 복사해서 대상 객체 반환
+
+// 참조형 데이터 : 메모리 주소를 참조하는 데이터
+// ex) 객체 데이터 {}, 배열 데이터 [], 함수 function
+
+const Heropy1 = {
+    name: "Heropy",
+    age: 85,
+};
+
+const Heropy2 = {
+    name: "Heropy",
+    email: "thesecon@gmail.com",
+};
+
+const Mina = {
+    name: "Mina",
+};
+
+const object7 = Object.assign(Heropy1, Heropy2);
+const object8 = { a: 123 };
+const object9 = { a: 123 };
+
+console.log(object7); // {name: "Heropy", age: 85, email: "thesecon@gmail.com"}
+console.log(Heropy1); // {name: "Heropy", age: 85, email: "thesecon@gmail.com"}
+console.log(object7 === Heropy1); // true   // 메모리 주소가 같음
+console.log(object8 === object9); // false   // 메모리 주소가 다름
+
+const object10 = Object.assign(Heropy1, Mina); // 속성명이 같을 경우 덮어쓰기
+console.log(object10); // {name: "Mina", age: 85, email: "thesecon@gmail.com"}
+
+// 새로운 객체 데이터 생성 (원본 손상 X)
+
+const userAge2 = {
+    name: "Heropy",
+    age: 85,
+};
+
+const userEmail2 = {
+    name: "Heropy",
+    email: "thesecon@gmail.com",
+};
+
+const target2 = Object.assign({}, userAge2, userEmail2); // 출처 객체의 수는 마음대로
+const target3 = Object.assign({}, userAge2);
+
+console.log(target2); // {name: "Heropy", age: 85, email: "thesecon@gmail.com"}
+console.log(userAge2); // {name: "Heropy", age: 85}
+console.log(target2 === userAge2); // false
+
+console.log(target3); // {name: "Heropy", age: 85}
+console.log(target3 === userAge2); // false   // 메모리 주소가 다름
+
+// Object.keys()
+
+const user1 = {
+    name: "Heropy",
+    age: 85,
+    email: "thesecon@gmail.com",
+};
+
+const keys = Object.keys(user1);
+
+console.log(keys); // (3) ["name", "age", "email"]   // key들을 배열로 만듬
+console.log(user1.email); // thesecon@gmail.com
+console.log(user1["email"]); // thesecon@gmail.com   // 아래처럼 사용할 경우 사용
+
+const values1 = keys.map((key) => user1.key);
+const values2 = keys.map((key) => user1[key]); // return 생략한 축약형
+
+console.log(values1); // (3) [undefined, undefined, undefined]   // 정상적인 동작 X
+console.log(values2); // (3) ["Heropy", 85, "thesecon@gmail.com"]
