@@ -104,19 +104,20 @@ console.log(Infinity - 100); // Infinity
 console.log(Infinity - Infinity); // NaN
 console.log(0 / 0); // NaN
 
-console.log(parseInt("문자열")); // NaN
-console.log(NaN - 0); // NaN
-console.log("문자열" - 0); // NaN
-
 // 문자열에서 숫자를 빼거나 곱하거나 나눌 때 문자열이 숫자로 형 변환
 // 문자열에 기본적으로 Number 적용 (parseInt나 parseFloat가 아님)
 console.log("3" - 0); // 3
 console.log(typeof ("3" - 0)); // number
 console.log("3월" - 0); // NaN
+console.log("문자열" - 0); // NaN
 console.log(Number("3월")); // NaN
 console.log(Number("3월") - 0); // NaN
+console.log(NaN - 0); // NaN
 console.log(parseInt("3월")); // 3
 console.log(parseInt("3월") - 0); // 3
+console.log(parseInt("문자열")); // NaN
+
+console.log(1 + undefined); // NaN
 
 // Number.toFixed() : 반올림
 const pi = 3.14159265358979;
@@ -322,6 +323,11 @@ console.log(arithmetic5); // 0
 */
 
 console.log("----- 2-2. 비교 연산자 -----");
+
+console.log(1 === "1"); // false
+console.log(1 == "1"); // true   // 형 변환이 일어남
+
+// ==는 형 변환이 일어나기 때문에 === 사용을 권장
 
 console.log(1 === 1); // true
 console.log(1 !== 1); // false
@@ -582,6 +588,24 @@ if (if_ > 18) {
 } else {
     console.log("유아");
 } // 성인
+
+// 참으로 취급하는 값
+// true, {}, [], 1, 2, 'false', -12, '3.14' ...
+
+if (true) {
+    console.log(123);
+} // 123
+
+if ("false") {
+    console.log(123);
+} // 123
+
+// 거짓으로 취급하는 값
+// false, '', null, undefined, 0, -0, NaN
+
+if (false) {
+    console.log(123);
+} // 아무것도 출력되지 않음
 
 /*
 
@@ -1492,14 +1516,13 @@ console.log(object6); // a
 
 console.log("----- 8-3. 객체 데이터 생성 -----");
 
-// 새로운 객체 데이터 생성 (원본 손상 O)
-
 // Object.assign(대상 객체, 출처 객체)
 // : 하나 이상의 출처 객체로부터 대상 객체로 속성을 복사해서 대상 객체 반환
 
 // 참조형 데이터 : 메모리 주소를 참조하는 데이터
 // ex) 객체 데이터 {}, 배열 데이터 [], 함수 function
 
+// 새로운 객체 데이터 생성 (원본 손상 O)
 const Heropy1 = {
     name: "Heropy",
     age: 85,
@@ -1527,43 +1550,168 @@ const object10 = Object.assign(Heropy1, Mina); // 속성명이 같을 경우 덮
 console.log(object10); // {name: "Mina", age: 85, email: "thesecon@gmail.com"}
 
 // 새로운 객체 데이터 생성 (원본 손상 X)
-
-const userAge2 = {
+const Heropy3 = {
     name: "Heropy",
     age: 85,
 };
 
-const userEmail2 = {
+const Heropy4 = {
     name: "Heropy",
     email: "thesecon@gmail.com",
 };
 
-const target2 = Object.assign({}, userAge2, userEmail2); // 출처 객체의 수는 마음대로
-const target3 = Object.assign({}, userAge2);
+const object11 = Object.assign({}, Heropy3, Heropy4); // 출처 객체의 수는 마음대로
+const object12 = Object.assign({}, Heropy3);
 
-console.log(target2); // {name: "Heropy", age: 85, email: "thesecon@gmail.com"}
-console.log(userAge2); // {name: "Heropy", age: 85}
-console.log(target2 === userAge2); // false
+console.log(object11); // {name: "Heropy", age: 85, email: "thesecon@gmail.com"}
+console.log(Heropy3); // {name: "Heropy", age: 85}
+console.log(object11 === Heropy3); // false
 
-console.log(target3); // {name: "Heropy", age: 85}
-console.log(target3 === userAge2); // false   // 메모리 주소가 다름
+console.log(object12); // {name: "Heropy", age: 85}
+console.log(object12 === Heropy3); // false   // 메모리 주소가 다름
 
-// Object.keys()
-
-const user1 = {
+// Object.keys() : 속성들을 배열로 만듬
+const Heropy5 = {
     name: "Heropy",
     age: 85,
     email: "thesecon@gmail.com",
 };
 
-const keys = Object.keys(user1);
+const keys = Object.keys(Heropy5);
 
-console.log(keys); // (3) ["name", "age", "email"]   // key들을 배열로 만듬
-console.log(user1.email); // thesecon@gmail.com
-console.log(user1["email"]); // thesecon@gmail.com   // 아래처럼 사용할 경우 사용
+console.log(keys); // (3) ["name", "age", "email"]
+console.log(Heropy5.email); // thesecon@gmail.com
+console.log(Heropy5["email"]); // thesecon@gmail.com   // 아래처럼 사용할 경우 사용
 
-const values1 = keys.map((key) => user1.key);
-const values2 = keys.map((key) => user1[key]); // return 생략한 축약형
+const object13 = keys.map((key) => Heropy5.key);
+const object14 = keys.map((key) => Heropy5[key]); // return 생략한 축약형
 
-console.log(values1); // (3) [undefined, undefined, undefined]   // 정상적인 동작 X
-console.log(values2); // (3) ["Heropy", 85, "thesecon@gmail.com"]
+console.log(object13); // (3) [undefined, undefined, undefined]   // 정상적인 동작 X
+console.log(object14); // (3) ["Heropy", 85, "thesecon@gmail.com"]
+
+/*
+
+9-1. 변수 유효범위 (let, const)
+
+*/
+
+console.log("----- 9-1. 변수 유효범위 (let, const) -----");
+
+// 블록 레벨의 유효범위 (가장 가까운 중괄호의 범위)
+
+function valid1() {
+    if (true) {
+        const valid = 123;
+        console.log(valid);
+    }
+}
+valid1(); // 123
+
+function valid2() {
+    if (true) {
+        const valid = 123;
+    }
+    console.log(valid);
+}
+// valid2() // err
+
+function valid3() {
+    if (true) {
+        console.log(valid);
+        const valid = 123;
+    }
+}
+// valid3(); // undefined  // err
+
+function valid4() {
+    console.log(valid);
+    if (true) {
+        const valid = 123;
+    }
+}
+// valid4() // err
+
+/*
+
+9-2. 변수 유효범위 (var)
+
+*/
+
+console.log("----- 9-2. 변수 유효범위 (var) -----");
+
+// 함수 레벨의 유효범위 (function 중괄호의 범위)
+
+function valid5() {
+    console.log(valid);
+    if (true) {
+        var valid = 123;
+    }
+}
+valid5(); // undefined
+
+function valid6() {
+    if (true) {
+        console.log(valid);
+        var valid = 123;
+    }
+}
+valid6(); // undefined
+
+function valid7() {
+    if (true) {
+        var valid = 123;
+        console.log(valid);
+    }
+}
+valid7(); // 123
+
+function valid8() {
+    if (true) {
+        var valid = 123;
+    }
+    console.log(valid);
+}
+valid8(); // 123
+
+var valid9 = 100; // 전역변수
+function valid10() {
+    var valid = 200; // 지역변수
+    console.log(valid9, valid);
+}
+valid10(); // 100, 200
+// console.log(valid);  // err - 유효범위 밖에 있어서
+
+function valid11() {
+    var valid = 400;
+    console.log(valid);
+}
+valid11(); // 400  // 전역변수보다 지역변수가 우선순위
+
+function valid12() {
+    var valid14 = 500;
+    var valid15 = 800;
+    console.log(valid14);
+
+    function valid13() {
+        console.log(valid15);
+    }
+    valid13();
+}
+valid12();  // 400  // 800
+
+// 전역변수 줄이는 법
+var jejudo = {
+    a: 100,
+    b: 200,
+    c: 300,
+
+    configMap: {
+        deviceSize: null,
+        total: 0,
+    },
+};
+
+// var 보다 let, const 사용을 권장
+// why?
+// 유효범위가 커서 의도하지 않은 범위에서 변수가 사용될 수도 있고
+// 메모리 누수로 발전할 수 있음 (메모리를 많이 차지)
