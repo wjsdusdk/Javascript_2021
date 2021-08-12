@@ -259,21 +259,6 @@ console.log("   Hello   world!   ".trim()); // Hello   world!
 
 /*
 
-1-6. 팝업창 (prompt, alert, confirm)
-
-*/
-
-console.log("----- 1-6. 팝업창 (prompt, alert, confirm) -----");
-
-/* prompt("몇 명이 참가하나요?"); // 사용자 입력을 받음
-alert(7); // 경고창
-confirm("맞나요?"); // '확인' or '취소'창
-
-console.log(typeof prompt("몇 명이 참가하나요?")); // string
-console.log(typeof Number(prompt("몇 명이 참가하나요?"))); // number */
-
-/*
-
 2-1. 산술 연산자
 
 */

@@ -1,4 +1,4 @@
-const number = Number(prompt("몇 명이 참가하나요?")); // prompt는 문자열이기 때문에 Number 사용
+const number = Number(prompt("몇 명이 참가하나요?"));
 const $button = document.querySelector("button");
 const $input = document.querySelector("input");
 const $word = document.querySelector("#word");
