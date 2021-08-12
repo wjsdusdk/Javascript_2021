@@ -208,7 +208,7 @@ console.log("----- 1-5. 데이터 타입 확인 (typeof) -----");
 console.log(typeof "Hello world!"); // string
 console.log(typeof "문자열"); // string
 console.log(
-    typeof `문자열
+  typeof `문자열
 
 `
 ); // string
@@ -256,6 +256,21 @@ console.log(id[0]); // thesecon
 
 // String.trim() : 맨 앞과 맨 뒤의 공백 제거
 console.log("   Hello   world!   ".trim()); // Hello   world!
+
+/*
+
+1-6. 팝업창 (prompt, alert, confirm)
+
+*/
+
+console.log("----- 1-6. 팝업창 (prompt, alert, confirm) -----");
+
+/* prompt("몇 명이 참가하나요?"); // 사용자 입력을 받음
+alert(7); // 경고창
+confirm("맞나요?"); // '확인' or '취소'창
+
+console.log(typeof prompt("몇 명이 참가하나요?")); // string
+console.log(typeof Number(prompt("몇 명이 참가하나요?"))); // number */
 
 /*
 
@@ -345,14 +360,14 @@ console.log(1 !== "1"); // true // 엄격하게 비교
 
 var compare;
 if (1 === "1") {
-    compare = "참";
+  compare = "참";
 } else {
-    compare = "거짓";
+  compare = "거짓";
 }
 console.log(compare); // 거짓
 
 function isEqual(x, y) {
-    return x === y;
+  return x === y;
 }
 console.log(isEqual(1, 1)); // true
 console.log(isEqual(2, "2")); // false
@@ -580,31 +595,31 @@ console.log("----- 4-1. 조건문 (if, else, else if) -----");
 
 var if_ = 100;
 if (if_ > 18) {
-    console.log("성인");
+  console.log("성인");
 } else if (if_ > 13) {
-    console.log("청소년");
+  console.log("청소년");
 } else if (if_ > 7) {
-    console.log("어린이");
+  console.log("어린이");
 } else {
-    console.log("유아");
+  console.log("유아");
 } // 성인
 
 // 참으로 취급하는 값
 // true, {}, [], 1, 2, 'false', -12, '3.14' ...
 
 if (true) {
-    console.log(123);
+  console.log(123);
 } // 123
 
 if ("false") {
-    console.log(123);
+  console.log(123);
 } // 123
 
 // 거짓으로 취급하는 값
 // false, '', null, undefined, 0, -0, NaN
 
 if (false) {
-    console.log(123);
+  console.log(123);
 } // 아무것도 출력되지 않음
 
 /*
@@ -622,47 +637,47 @@ let condition = "switch";
 
 // switch () 조건식의 값이 case의 비교 조건식 값과 일치(===)하면 실행
 switch (condition) {
-    case "switch":
-        console.log("switch");
-        console.log("동작문");
+  case "switch":
+    console.log("switch");
+    console.log("동작문");
 }
 
 // 조건이 일치하는 줄 이하는 무조건 실행
 switch (condition) {
-    case "switch0":
-        console.log("switch1");
-    case "switch":
-        console.log("switch2");
-    case "switch2":
-        console.log("switch3");
+  case "switch0":
+    console.log("switch1");
+  case "switch":
+    console.log("switch2");
+  case "switch2":
+    console.log("switch3");
 }
 
 // break : 조건이 일치하면 종료
 switch (condition) {
-    case "switch0":
-        console.log("동작문1");
-        break;
-    case "switch":
-        console.log("동작문2");
-        break;
-    case "switch2":
-        console.log("동작문3");
-        break;
+  case "switch0":
+    console.log("동작문1");
+    break;
+  case "switch":
+    console.log("동작문2");
+    break;
+  case "switch2":
+    console.log("동작문3");
+    break;
 }
 
 // default : 아무것도 일치하지 않을 경우
 switch (condition) {
-    case "switch0":
-        console.log("switch1");
-        break;
-    case "switch1":
-        console.log("switch2");
-        break;
-    case "switch2":
-        console.log("switch3");
-        break;
-    default:
-        console.log("아무것도 일치하지 않음");
+  case "switch0":
+    console.log("switch1");
+    break;
+  case "switch1":
+    console.log("switch2");
+    break;
+  case "switch2":
+    console.log("switch3");
+    break;
+  default:
+    console.log("아무것도 일치하지 않음");
 }
 
 // 변수가 특정 값으로 딱 떨어지는 조건으로 분기 처리를 한다면 if문 보다 switch문이 적합
@@ -685,9 +700,9 @@ console.log(condition2); // 거짓
 
 // 1 < 2가 true면 "참", false면 "거짓"
 if (1 < 2) {
-    console.log("참");
+  console.log("참");
 } else {
-    console.log("거짓");
+  console.log("거짓");
 } // 참
 
 console.log(1 < 2 ? "참" : "거짓"); // 참
@@ -726,8 +741,8 @@ console.log("----- 2-16. 반복문 (while) -----");
 
 let repeat = 0;
 while (repeat < 10) {
-    console.log("while");
-    repeat++;
+  console.log("while");
+  repeat++;
 }
 
 /*
@@ -741,24 +756,24 @@ console.log("----- 5-2. 반복문 (for) -----");
 // for (시작; 조건식; 종료식) {동작문}
 
 for (let i = 0; i < 10; i++) {
-    console.log("for");
+  console.log("for");
 }
 
 var for_ = 0;
 for (; for_ < 10; for_++) {
-    console.log(for_);
+  console.log(for_);
 } // 0~9
 
 // 시작, 조건식, 종료식 생략 가능 (조건식 생략시 true -> 무한반복 - 무한반복 금지)
 /* for (;;) {} */
 
 for (let i = 0; i < 10; i = i + 2) {
-    console.log(i + 1);
+  console.log(i + 1);
 }
 
 var for2 = ["극한직업", "어벤저스", "오펀", "강시", "나 홀로 집에", "내부자들"];
 for (var i = 0; i < for2.length; i++) {
-    console.log(for2[i]); // 극한직업~내부자들
+  console.log(for2[i]); // 극한직업~내부자들
 }
 console.log(for2[for2.length - 1]); // 내부자들
 
@@ -773,19 +788,19 @@ console.log("----- 5-3. break와 continue -----");
 // break : 멈추기
 let break_ = 0;
 while (true) {
-    if (break_ === 5) break;
-    break_++;
+  if (break_ === 5) break;
+  break_++;
 }
 console.log(break_);
 
 // continue : 건너뛰기
 let continue_ = 0;
 while (continue_ < 10) {
-    continue_++;
-    if (continue_ % 2 === 0) {
-        continue;
-    }
-    console.log(continue_);
+  continue_++;
+  if (continue_ % 2 === 0) {
+    continue;
+  }
+  console.log(continue_);
 }
 
 /*
@@ -797,20 +812,20 @@ while (continue_ < 10) {
 console.log("----- 5-4. 중첩 반복문 -----");
 
 for (let i = 0; i < 5; i++) {
-    for (let j = 0; j < 5; j++) {
-        console.log(i, j);
-    }
+  for (let j = 0; j < 5; j++) {
+    console.log(i, j);
+  }
 }
 
 for (let i = 0; i < 5; i++) {
-    if (i % 2 === 0) continue;
-    for (let j = 0; j < 5; j++) {
-        if (j % 2 === 0) continue;
-        for (let k = 0; k < 5; k++) {
-            if (k % 2 === 0) continue;
-            console.log(i, j, k);
-        }
+  if (i % 2 === 0) continue;
+  for (let j = 0; j < 5; j++) {
+    if (j % 2 === 0) continue;
+    for (let k = 0; k < 5; k++) {
+      if (k % 2 === 0) continue;
+      console.log(i, j, k);
     }
+  }
 }
 
 /*
@@ -822,42 +837,42 @@ for (let i = 0; i < 5; i++) {
 console.log("----- 5-5. 별찍기 숙제 -----");
 
 for (let i = 0; i < 5; i++) {
-    console.log("*".repeat(i + 1));
+  console.log("*".repeat(i + 1));
 }
 
 for (let i = 5; i > 0; i--) {
-    console.log("#".repeat(i));
+  console.log("#".repeat(i));
 }
 
 for (let i = 0; i < 5; i++) {
-    console.log("*".repeat(5 - i));
+  console.log("*".repeat(5 - i));
 }
 
 for (let i = 0; i < 10; i++) {
-    if (i % 2 === 0) continue;
-    console.log("#".repeat(i));
+  if (i % 2 === 0) continue;
+  console.log("#".repeat(i));
 }
 
 for (let i = 0; i < 10; i++) {
-    if (i % 2 === 0) continue;
-    console.log("*".repeat(10 - i));
+  if (i % 2 === 0) continue;
+  console.log("*".repeat(10 - i));
 }
 
 for (let i = 0; i < 5; i++) {
-    console.log(" ".repeat(i) + "#".repeat(5 - i));
+  console.log(" ".repeat(i) + "#".repeat(5 - i));
 }
 
 for (let i = 0; i < 5; i++) {
-    console.log(" ".repeat(4 - i) + "*".repeat(i + 1));
+  console.log(" ".repeat(4 - i) + "*".repeat(i + 1));
 }
 
 for (let i = 0; i < 5; i++) {
-    console.log(" ".repeat(i) + "#".repeat(5 - i));
+  console.log(" ".repeat(i) + "#".repeat(5 - i));
 }
 
 for (let i = 0; i < 10; i++) {
-    if (i % 2 === 0) continue;
-    console.log(" ".repeat((9 - i) / 2) + "*".repeat(i));
+  if (i % 2 === 0) continue;
+  console.log(" ".repeat((9 - i) / 2) + "*".repeat(i));
 }
 
 /* for (let i = 0; i < 10; i++) {
@@ -882,8 +897,8 @@ console.log(array[0]); // apple
 
 // 배열 요소로 배열 가능
 const arrayOfArray = [
-    [1, 2, 3],
-    [4, 5],
+  [1, 2, 3],
+  [4, 5],
 ];
 console.log(arrayOfArray[0]); // (3) [1, 2, 3]
 
@@ -1011,20 +1026,20 @@ console.log("----- 6-4. 배열 반복 -----");
 let array5 = 0;
 
 while (array5 < array4.length) {
-    console.log(array4[array5]);
-    array5++;
+  console.log(array4[array5]);
+  array5++;
 }
 
 let array6 = "안녕하십니까";
 let array7 = 0;
 
 while (array7 < array6.length) {
-    console.log(array6[array7]);
-    array7++;
+  console.log(array6[array7]);
+  array7++;
 }
 
 for (let i = 0; i < array6.length; i++) {
-    console.log(array6[i]);
+  console.log(array6[i]);
 }
 
 /*
@@ -1040,7 +1055,7 @@ console.log("----- 6-5. 배열 콜백함수 -----");
 const array13 = ["Apple", "Banana", "Cherry"];
 
 array13.forEach(function (element, index, array) {
-    console.log(element, index, array);
+  console.log(element, index, array);
 }); // 매개변수의 이름은 마음대로 정하기
 
 // Apple 0 (3) ["Apple", "Banana", "Cherry"]
@@ -1050,7 +1065,7 @@ array13.forEach(function (element, index, array) {
 // Array.map(콜백함수) : 배열 데이터의 요소 갯수만큼 콜백함수를 반복적으로 실행 (반환 O, 원본 데이터 손상 X)
 
 const map1 = array13.forEach(function (array13, index) {
-    console.log(`${array13}-${index}`);
+  console.log(`${array13}-${index}`);
 }); // 콜백함수 밖으로 반환 X
 
 /* 축약
@@ -1063,14 +1078,14 @@ array13.forEach((array13, index) => {
 // Cherry-2
 
 const map2 = array13.map(function (array13, index) {
-    return `${array13}-${index}`;
+  return `${array13}-${index}`;
 }); // 콜백함수 밖으로 반환 O
 
 const map3 = array13.map(function (array13, index) {
-    return {
-        id: index,
-        name: array13,
-    };
+  return {
+    id: index,
+    name: array13,
+  };
 }); // 콜백함수 밖으로 반환 O
 
 /* 축약
@@ -1094,7 +1109,7 @@ console.log("----- 6-6. 배열 메서드 응용하기 -----");
 const array8 = ["안", "ㅎ", "녕", "ㅎ", "하", "세", "ㅎ", "요"];
 
 while (array8.indexOf("ㅎ") > -1) {
-    array8.splice(array8.indexOf("ㅎ"), 1);
+  array8.splice(array8.indexOf("ㅎ"), 1);
 }
 console.log(array8); // (5) ["안", "녕", "하", "세", "요"]
 
@@ -1102,8 +1117,8 @@ const array9 = ["안", "ㅎ", "녕", "ㅎ", "하", "세", "ㅎ", "요"];
 let array9_index = array9.indexOf("ㅎ");
 
 while (array9_index > -1) {
-    array9.splice(array9_index, 1);
-    array9_index = array9.indexOf("ㅎ"); // 꼭 적어줘야함
+  array9.splice(array9_index, 1);
+  array9_index = array9.indexOf("ㅎ"); // 꼭 적어줘야함
 }
 console.log(array9); // (5) ["안", "녕", "하", "세", "요"]
 
@@ -1111,28 +1126,28 @@ console.log(array9); // (5) ["안", "녕", "하", "세", "요"]
 const array10 = [1, 2, 3, 4, 5];
 
 if (array10.indexOf(1)) {
-    console.log("1 찾음");
+  console.log("1 찾음");
 } else {
-    console.log("1 못찾음");
+  console.log("1 못찾음");
 } // 1 못찾음
 
 if (array10.indexOf(1) > -1) {
-    console.log("1 찾음");
+  console.log("1 찾음");
 } else {
-    console.log("1 못찾음");
+  console.log("1 못찾음");
 } // 1 찾음
 
 // Array.filter() : 필터링된 결과(true)만 반환 (반환 O, 원본 데이터 손상 X)
 const array14 = [1, 2, 3, 4];
 const filter1 = array14.map((number) => {
-    return number < 3;
+  return number < 3;
 });
 
 /* 축약
 array14.map((number) => number < 3); */
 
 const filter2 = array14.filter((number) => {
-    return number < 3;
+  return number < 3;
 });
 
 /* 축약
@@ -1144,7 +1159,7 @@ console.log(filter2); // (2) [1, 2]
 // Array.find() : 조건을 만족하는 첫 번째 요소의 값을 반환 (없다면 undefined)
 const array15 = ["Apple", "Banana", "Cherry"];
 const find = array15.find((fruit) => {
-    return /^B/.test(fruit);
+  return /^B/.test(fruit);
 });
 
 /* 축약
@@ -1158,7 +1173,7 @@ console.log(find); // Banana
 
 // Array.findIndex() : 일치하는 첫 번째 데이터의 index를 찾음
 const findIndex = array15.findIndex((fruit) => {
-    return /^B/.test(fruit);
+  return /^B/.test(fruit);
 });
 
 /* 축약
@@ -1184,14 +1199,14 @@ console.log("----- 7-1. 호이스팅 -----");
 function20(1, 2); // 3
 
 function function20(x, y) {
-    console.log(x + y);
+  console.log(x + y);
 }
 
 // 함수 표현 방식 (익명 함수) : double3()을 먼저 호출하는 것이 불가능
 /* function21(1, 2); // err */
 
 const function21 = function (x, y) {
-    console.log(x + y);
+  console.log(x + y);
 };
 
 /*
@@ -1204,12 +1219,12 @@ console.log("----- 7-2. 화살표 함수 -----");
 
 // function () {}
 const function24 = function (x, y) {
-    console.log(x + y);
+  console.log(x + y);
 };
 
 // 축약형 () => {}
 const function25 = (x, y) => {
-    console.log(x + y);
+  console.log(x + y);
 };
 
 // 객체 데이터 축약형 () => ({})
@@ -1229,70 +1244,70 @@ console.log("----- 7-3. return -----");
 
 // 함수를 호출하지 않으면 undefined, 즉 반환값이 없음
 function function1() {
-    // return undefined; // return을 사용하지 않으면 기본적으로 생략되어 있음
+  // return undefined; // return을 사용하지 않으면 기본적으로 생략되어 있음
 }
 function1();
 
 function function2() {
-    return console.log("반환값");
+  return console.log("반환값");
 }
 function2(); // 반환값
 
 // 함수 안에 조건을 둬서 어디까지 실행되는지 정할 수 있음
 function function3() {
-    if (true) {
-        return;
-    }
-    console.log("return");
+  if (true) {
+    return;
+  }
+  console.log("return");
 }
 function3(); // 아무것도 출력되지 않음
 
 function function4() {
-    if (false) {
-        return;
-    }
-    console.log("return");
+  if (false) {
+    return;
+  }
+  console.log("return");
 }
 function4(); // return
 
 // return은 하나만 가능
 function function5() {
-    return 1, 5;
+  return 1, 5;
 }
 console.log(function5()); // 5
 
 function function6() {
-    return [1, 5];
+  return [1, 5];
 }
 console.log(function6()); // (2) [1, 5]
 
 function function7() {
-    console.log("Hi");
-    return;
-    console.log("return");
+  console.log("Hi");
+  return;
+  console.log("return");
 }
 function7(); // Hi
 
 function function22(x, y) {
-    if (x < 2) {
-        return;
-    }
-    return x + y;
+  if (x < 2) {
+    return;
+  }
+  return x + y;
 }
 console.log(function22(1, 3)); // undefined
 console.log(function22(7, 3)); // 10
 
 function function23(x, y) {
-    if (x < 2) {
-        return 123;
-    }
-    return x + y;
+  if (x < 2) {
+    return 123;
+  }
+  return x + y;
 }
 console.log(function23(1, 3)); // 123
 
 // {}와 return이 바로 이어서 나오면 {}와 return 생략 가능
 const function13 = (x, y, z) => {
-    return x * y * z;
+  return x * y * z;
 };
 
 const function14 = (x, y, z) => x * y * z;
@@ -1311,43 +1326,43 @@ console.log("----- 7-4. 매개변수(parameter)와 인수(argument) -----");
 // 일일이 지정하기가 힘든 경우 사용
 
 function function8(parameter) {
-    console.log(parameter);
+  console.log(parameter);
 }
 function8("argument"); // argument
 
 function function9(w, x, y, z) {
-    console.log(w, x, y, z); // a b c undefined
-    console.log(arguments); // Arguments(3) ["a", "b", "c"]
+  console.log(w, x, y, z); // a b c undefined
+  console.log(arguments); // Arguments(3) ["a", "b", "c"]
 }
 function9("a", "b", "c");
 
 function function10(x, y) {
-    return console.log(x + y);
+  return console.log(x + y);
 }
 function10(5, 3); // 8
 
 function function11(x, y) {
-    console.log(x, y); // 5 undefined
-    return console.log(x + y); // NaN
+  console.log(x, y); // 5 undefined
+  return console.log(x + y); // NaN
 }
 function11(5);
 
 function function12(x, y) {
-    return console.log(x, y); // a b
+  return console.log(x, y); // a b
 }
 function12("a", "b", "c");
 
 // 함수 내부에서 변수나 상수 선언 가능
 function function15(x, y) {
-    const fff = 100;
-    return console.log((x - y) * fff);
+  const fff = 100;
+  return console.log((x - y) * fff);
 }
 function15(4, 2); // 200
 
 // 함수 외부의 변수나 상수 사용 가능
 const fff = 100;
 function function16(x, y) {
-    return console.log((x - y) * fff);
+  return console.log((x - y) * fff);
 }
 function16(4, 2); // 200
 
@@ -1360,8 +1375,8 @@ function16(4, 2); // 200
 // 여러번 함수를 실행하는 것은 비효율적
 
 function function17(x, y) {
-    console.log(x + y);
-    return x + y;
+  console.log(x + y);
+  return x + y;
 }
 const function18 = function17(1, 3);
 const function19 = function17(4, 12);
@@ -1382,13 +1397,13 @@ console.log("----- 7-5. 즉시실행함수 (IIFE) -----");
 
 // 즉시실행함수 X
 function function26(a) {
-    console.log(a * 2);
+  console.log(a * 2);
 }
 function26(7); // 14
 
 // 즉시실행함수 O
 (function (a) {
-    console.log(a * 2);
+  console.log(a * 2);
 })(7); // 14
 
 /*
@@ -1406,11 +1421,11 @@ console.log("----- 8-1. 객체 리터럴 기본 -----");
 } */
 
 const yeona = {
-    name: "전연아",
-    year: 1994,
-    month: 10,
-    date: 31,
-    gender: "W",
+  name: "전연아",
+  year: 1994,
+  month: 10,
+  date: 31,
+  gender: "W",
 };
 
 console.log(yeona.name); // 전연아
@@ -1421,21 +1436,21 @@ const name = "???";
 console.log(yeona[name]); // undefined  //  yeona["???"]와 같음
 
 const yeona2 = {
-    name: {
-        first: "연아",
-        last: "전",
-    },
-    gender: "W",
+  name: {
+    first: "연아",
+    last: "전",
+  },
+  gender: "W",
 };
 console.log(yeona2.name.last); // 전
 console.log(yeona2["name"]["last"]); // 전
 
 // 속성 이름에 "" 붙여줘야하는 경우
 const literal = {
-    ab: "a",
-    "2ab": "b", // 첫글자 숫자인 경우
-    "a b": "c", // 뛰어쓰기가 있는 경우
-    "a-b": "d", // 특수문자가 있는 경우
+  ab: "a",
+  "2ab": "b", // 첫글자 숫자인 경우
+  "a b": "c", // 뛰어쓰기가 있는 경우
+  "a-b": "d", // 특수문자가 있는 경우
 };
 
 // 속성 이름에 "" 붙여줘야하는 경우에는 []만 가능
@@ -1469,9 +1484,9 @@ console.log(literal3.a); // bye
 // 메서드 : 객체의 속성 값인 함수
 // console.log : console이라는 객체의 log 메서드
 const debug = {
-    log: function (a) {
-        console.log(a);
-    },
+  log: function (a) {
+    console.log(a);
+  },
 };
 debug.log("Hi"); // Hi
 
@@ -1524,17 +1539,17 @@ console.log("----- 8-3. 객체 데이터 생성 -----");
 
 // 새로운 객체 데이터 생성 (원본 손상 O)
 const Heropy1 = {
-    name: "Heropy",
-    age: 85,
+  name: "Heropy",
+  age: 85,
 };
 
 const Heropy2 = {
-    name: "Heropy",
-    email: "thesecon@gmail.com",
+  name: "Heropy",
+  email: "thesecon@gmail.com",
 };
 
 const Mina = {
-    name: "Mina",
+  name: "Mina",
 };
 
 const object7 = Object.assign(Heropy1, Heropy2);
@@ -1551,13 +1566,13 @@ console.log(object10); // {name: "Mina", age: 85, email: "thesecon@gmail.com"}
 
 // 새로운 객체 데이터 생성 (원본 손상 X)
 const Heropy3 = {
-    name: "Heropy",
-    age: 85,
+  name: "Heropy",
+  age: 85,
 };
 
 const Heropy4 = {
-    name: "Heropy",
-    email: "thesecon@gmail.com",
+  name: "Heropy",
+  email: "thesecon@gmail.com",
 };
 
 const object11 = Object.assign({}, Heropy3, Heropy4); // 출처 객체의 수는 마음대로
@@ -1572,9 +1587,9 @@ console.log(object12 === Heropy3); // false   // 메모리 주소가 다름
 
 // Object.keys() : 속성들을 배열로 만듬
 const Heropy5 = {
-    name: "Heropy",
-    age: 85,
-    email: "thesecon@gmail.com",
+  name: "Heropy",
+  age: 85,
+  email: "thesecon@gmail.com",
 };
 
 const keys = Object.keys(Heropy5);
@@ -1589,11 +1604,29 @@ const object14 = keys.map((key) => Heropy5[key]); // return 생략한 축약형
 console.log(object13); // (3) [undefined, undefined, undefined]   // 정상적인 동작 X
 console.log(object14); // (3) ["Heropy", 85, "thesecon@gmail.com"]
 
-/*
-
-9-1. 변수 유효범위 (let, const)
+/* 
 
 */
+
+/* 
+
+*/
+
+/* 
+
+*/
+
+/* 
+
+*/
+
+/* 
+
+*/
+
+/* 
+
+// 9-1. 변수 유효범위 (let, const)
 
 console.log("----- 9-1. 변수 유효범위 (let, const) -----");
 
@@ -1631,11 +1664,7 @@ function valid4() {
 }
 // valid4() // err
 
-/*
-
-9-2. 변수 유효범위 (var)
-
-*/
+// 9-2. 변수 유효범위 (var)
 
 console.log("----- 9-2. 변수 유효범위 (var) -----");
 
@@ -1697,7 +1726,7 @@ function valid12() {
     }
     valid13();
 }
-valid12();  // 400  // 800
+valid12(); // 400  // 800
 
 // 전역변수 줄이는 법
 var jejudo = {
@@ -1715,3 +1744,5 @@ var jejudo = {
 // why?
 // 유효범위가 커서 의도하지 않은 범위에서 변수가 사용될 수도 있고
 // 메모리 누수로 발전할 수 있음 (메모리를 많이 차지)
+
+ */
